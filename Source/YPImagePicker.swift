@@ -69,21 +69,20 @@ override open func viewDidLoad() {
             transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
             transition.type = CATransitionType.fade
             self?.view.layer.add(transition, forKey: nil)
-            
-            // Multiple items flow
-            if items.count > 1 {
-                if YPConfig.library.skipSelectionsGallery {
-                    self?.didSelect(items: items)
-                    return
-                } else {
-                    let selectionsGalleryVC = YPSelectionsGalleryVC(items: items) { _, items in
-                        self?.didSelect(items: items)
-                    }
-                    self?.pushViewController(selectionsGalleryVC, animated: true)
-                    return
-                }
-            }
-            
+            self?.didSelect(items: items)
+            /*
+             if items.count > 1 {
+             if YPConfig.library.skipSelectionsGallery {
+             self?.didSelect(items: items)
+             return
+             } else {
+             let selectionsGalleryVC = YPSelectionsGalleryVC(items: items) { _, items in
+             self?.didSelect(items: items)
+             }
+             self?.pushViewController(selectionsGalleryVC, animated: true)
+             return
+             }
+             }
             // One item flow
             let item = items.first!
             switch item {
@@ -137,13 +136,13 @@ override open func viewDidLoad() {
                 } else {
                     self?.didSelect(items: [YPMediaItem.video(v: video)])
                 }
-            }
+            }*/
         }
         
         // If user has not customized the Nav Bar tintColor, then use black.
-        if UINavigationBar.appearance().tintColor == nil {
-            UINavigationBar.appearance().tintColor  = .black
-        }
+//        if UINavigationBar.appearance().tintColor == nil {
+//            UINavigationBar.appearance().tintColor  = .black
+//        }
     }
     
     deinit {
